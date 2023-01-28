@@ -12,9 +12,10 @@
   <body>
   <nav>
   <% if user_signed_in? %>
-    <%= link_to current_user.name, users_show_path %>
-    <%= link_to 'プロフィール変更', edit_user_registration_path %>
+    <%= link_to "アカウント設定", users_account_path %>
     <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+    <%= current_user.name %>
+    <%= image_tag current_user.image.url, size: '50x50' %>
   <% else %>
     <%= link_to 'サインアップ', new_user_registration_path %>
     <%= link_to 'ログイン', new_user_session_path %>
