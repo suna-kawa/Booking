@@ -1,13 +1,52 @@
-<h1>プロフィール</h1>
-<h2><%= link_to "アカウント", users_account_path %></h2>
-<h2><%= link_to "プロフィール", users_profile_path %></h2>
-<%= link_to '編集', users_mypage_path %>
-<p>アイコン画像</p>
-<% if @user.image? %>
-  <%= image_tag @user.image.url %>
-<% else %>
-  <%= image_tag ("noimage.png") %>
-<% end %>
+<%# アカウント設定メニュー %>
+<div class="border-b border-gray-200 dark:border-gray-700">
+  <ul class="flex flex-wrap -mb-px text-sm font-medium text-center text-gray-500 dark:text-gray-400">
+    <li class="mr-2 click-color">
+    <%= link_to users_account_path, data: {"turbolinks" => false}, class: "inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group" do %>
+    <svg aria-hidden="true" class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path></svg><%= 'アカウント' %>
+    <% end %>
+    </li>
+    <li class="mr-2 click-color">
+    <%= link_to users_profile_path, data: {"turbolinks" => false}, class: "inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group" do %>
+    <svg aria-hidden="true" class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z" clip-rule="evenodd"></path></svg><%= 'プロフィール' %>
+    <% end %>
+    </li>
+    <li class="mr-2 click-color">
+    <%= link_to edit_user_registration_path, data: {"turbolinks" => false}, class: "inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group" do %>
+    <svg aria-hidden="true" class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"></path></svg><%= 'アカウント編集' %>
+    <% end %>
+    </li>
+    <li class="mr-2 click-color">
+    <%= link_to users_mypage_path, data: {"turbolinks" => false}, class: "inline-flex p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group" do %>
+    <svg aria-hidden="true" class="w-5 h-5 mr-2 text-gray-400 group-hover:text-gray-500 dark:text-gray-500 dark:group-hover:text-gray-300" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M5 4a1 1 0 00-2 0v7.268a2 2 0 000 3.464V16a1 1 0 102 0v-1.268a2 2 0 000-3.464V4zM11 4a1 1 0 10-2 0v1.268a2 2 0 000 3.464V16a1 1 0 102 0V8.732a2 2 0 000-3.464V4zM16 3a1 1 0 011 1v7.268a2 2 0 010 3.464V16a1 1 0 11-2 0v-1.268a2 2 0 010-3.464V4a1 1 0 011-1z"></path></svg><%= 'プロフィール編集' %>
+    <% end %>
+    </li>
+  </ul>
+</div>
 
-<p>名前<%= @user.name %></p>
-<p>自己紹介<%= @user.introduction %></p>
+<%# プロフィール %>
+<dl class="pt-10 m-auto pb-40 max-w-md text-gray-900 divide-y-4 divide-gray-200 dark:text-white dark:divide-gray-700 text-center">
+  <div class="flex flex-col py-3">
+    <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-800 text-left text-xl">プロフィール</dt>
+  </div>
+  <div class="flex flex-col pb-3">
+    <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">アイコン画像</dt>
+    <dd class="text-lg font-semibold  text-gray-800">
+    <% if @user.image? %>
+    <%= image_tag @user.image.url, class: "m-auto" %>
+    <% else %>
+    <%= image_tag ("noimage.png"), class: "m-auto" %>
+    <% end %></dd>
+  </div>
+  <div class="flex flex-col py-3">
+    <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">名前</dt>
+    <dd class="text-lg font-semibold text-gray-800"><%= current_user.name %></dd>
+  </div>
+  <div class="flex flex-col py-3">
+    <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">自己紹介</dt>
+    <dd class="text-lg font-semibold text-gray-800"><%= current_user.introduction %></dd>
+  </div>
+  <div class="flex flex-col py-3">
+    <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400"></dt>
+    </div>
+</dl>
