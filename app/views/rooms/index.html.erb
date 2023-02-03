@@ -1,4 +1,29 @@
-<div>
-  <h1 class="font-bold text-4xl">Rooms#index</h1>
-  <p>Find me in app/views/rooms/index.html.erb</p>
-</div>
+<div class="text-2xl">登録済みホテル一覧</div>
+
+<table class="table-auto text-center">
+<thead>
+  <tr>
+    <th>ホテル画像</th>
+    <th>ホテル名</th>
+    <th>ホテル紹介</th>
+    <th>料金</th>
+    <th>作成日</th>
+  </tr>
+</thead>
+<tbody>
+  <% @rooms.each do |room| %>
+  <tr>
+    <td><% if room.hotel_image? %>
+    <%= image_tag room.hotel_image.url, size: '200x200' %>
+    <% else %>
+    <%= image_tag ("room_default.jpg"), size: '200x200'%>
+    <% end %>
+    </td>
+    <td><%= link_to room.hotel_name, room_path(room), class: 'text-blue-700'  %></td>
+    <td><%= room.hotel_introduction %></td>
+    <td>￥<%= room.price %>~</td>
+    <td><%= room.updated_at %></td>
+  </tr>
+  <% end %>
+</tbody>
+</table>
