@@ -1,4 +1,15 @@
+<%= link_to "戻る", :back %>
 <div>
   <h1 class="font-bold text-4xl">Rooms#show</h1>
   <p>Find me in app/views/rooms/show.html.erb</p>
+  <p><%= @room.hotel_name %></p>
+  <p><%= @room.hotel_introduction %></p>
+  <p>
+  <% if @room.hotel_image? %>
+    <%= image_tag @room.hotel_image.url, class: "m-auto", size: '100x100' %>
+    <% else %>
+    <%= image_tag ("room_default.jpg"), class: "m-auto", size: '600x600' %>
+    <% end %>
+  </p>
+  <p><%= @room.price %></p>
 </div>

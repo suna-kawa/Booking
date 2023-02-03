@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   get 'rooms/index'
   get 'rooms/new'
-  get 'rooms/show'
   root 'users#index'
   devise_for :users 
   get 'users/account'

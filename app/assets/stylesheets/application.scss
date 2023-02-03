@@ -32,3 +32,9 @@
   margin: 0;
   padding: 0;
 }
+// number_fieldの矢印を消す
+.field-control::-webkit-inner-spin-button,
+.field-control::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
