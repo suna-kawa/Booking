@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :rooms
   # 画像用カラムとアップローダークラスを紐付ける
   mount_uploader :image, ImageUploader
   # Include default devise modules. Others available are:
