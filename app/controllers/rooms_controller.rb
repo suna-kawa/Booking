@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: [:home, :hotellist]
   def index
     @rooms = Room.all
   end
@@ -30,6 +30,17 @@ class RoomsController < ApplicationController
   end
 
   def destroy
+  end
+
+  def home
+    #params[:q]には検索フォームに入力した値が入る
+    @q = Room.ransack(params[:q])
+  end
+
+  def hotellist
+    @q = Room.ransack(params[:q])
+    # 重複データを除外=>distinct: true
+    @rooms = @q.result(distinct: true)
   end
 
   private

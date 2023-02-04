@@ -1,9 +1,6 @@
 class UsersController < ApplicationController
-  # アクション実行前にログインされてるかどうか確認(indexは除く)
-  before_action :authenticate_user!, except: [:index]
-  
-  def index
-  end
+  # アクション実行前にログインされてるかどうか確認
+  before_action :authenticate_user!
 
   def account
     @user = current_user
