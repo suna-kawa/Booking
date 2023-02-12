@@ -1,46 +1,58 @@
-<%= link_to "戻る", :back %>
-<div>
-  <h1 class="font-bold text-4xl">Rooms#show</h1>
-  <p>Find me in app/views/rooms/show.html.erb</p>
-  <p><%= @room.hotel_name %></p>
-  <p><%= @room.hotel_introduction %></p>
-  <p>
-  <% if @room.hotel_image? %>
-    <%= image_tag @room.hotel_image.url, class: "m-auto", size: '100x100' %>
-    <% else %>
-    <%= image_tag ("room_default.jpg"), class: "m-auto", size: '600x600' %>
-    <% end %>
-  </p>
-  <p><%= @room.price %></p>
-</div>
+<%= search_form_for @q, url: hotellist_rooms_path(@q), class: 'justify-items-stretch bg-slate-400 pb-5 text-center pt-5'  do |f| %>
+  <%= f.text_field :address_cont, placeholder: "エリア名を入力", class: 'mr-5' %>
+  <%= f.text_field :hotel_name_or_hotel_introduction_cont, placeholder: "キーワード名を入力" %>
+  <%= f.submit "検索", class: "text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 cursor-pointer" %>
+<% end %>
 
+<%= link_to "戻る", :back, class: "text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 pt-2" %>
+<div>
+
+<section class="text-gray-600 body-font m-auto">
+  <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
+    <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
+    <% if @room.hotel_image? %>
+    <%= image_tag @room.hotel_image.url, class: "object-cover object-center rounded", size: '100x100' %>
+    <% else %>
+    <%= image_tag ("room_default.jpg"), class: "object-cover object-center rounded", size: '600x600'  %>
+    <% end %>
+  </div>
+  <div class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center bg-slate-50">
+    <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">ホテル名：<%= @room.hotel_name %></h1>
+    <p class="mb-8 leading-relaxed">ホテル紹介：<%= @room.hotel_introduction %></p>
+    <p class="mb-8 leading-relaxed">￥ <%= @room.price %></p>
+    <div class="flex w-full md:justify-start justify-center items-end">
+  <div class="relative mr-4 lg:w-full xl:w-1/2 w-2/4">
 <% if user_signed_in? %>
 <%= form_with model: Reservation.new, local: true, url: confirm_reservations_path do |f| %>
-  <%= f.label :check_in, 'チェックイン' %>
-  <%= f.date_field :check_in %>
-
-  <%= f.label :check_out, 'チェックアウト' %>
-  <%= f.date_field :check_out %>
-
-
-  <%= f.label :guest, '宿泊人数' %>
-  <%= f.number_field :guest %>
-
+  <%= f.label :check_in, 'チェックイン' %><br>
+  <%= f.date_field :check_in %><br>
+  <br>
+  <%= f.label :check_out, 'チェックアウト' %><br>
+  <%= f.date_field :check_out %><br>
+  <br>
+  <%= f.label :guest, '宿泊人数' %><br>
+  <%= f.number_field :guest %><br>
+  <br>
   <%= f.hidden_field :room_id, :value => @room.id %>
-
-  <%= f.submit '予約する' %>
+  <%= f.submit '予約する', class: 'inline-flex text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded text-lg cursor-pointer' %>
 <% end %>
 <% else %>
 <%= form_with local: true, class: "" do |f| %>
-  <%= f.label :check_in, 'チェックイン' %>
-  <%= f.date_field :check_in %>
-
-  <%= f.label :check_out, 'チェックアウト' %>
-  <%= f.date_field :check_out %>
-
-  <%= f.label :guest, '宿泊人数' %>
-  <%_= f.number_field :guest %>
-
-  <%= link_to "ログインする", new_user_session_path, class: "mr-5 hover:text-gray-400" %>
+  <%= f.label :check_in, 'チェックイン' %><br>
+  <%= f.date_field :check_in %><br>
+  <br>
+  <%= f.label :check_out, 'チェックアウト' %><br>
+  <%= f.date_field :check_out %><br>
+  <br>
+  <%= f.label :guest, '宿泊人数' %><br>
+  <%_= f.number_field :guest %><br>
+  <br>
+  <%= link_to "ログインする", new_user_session_path, class: 'inline-flex text-white bg-yellow-500 border-0 py-2 px-6 focus:outline-none hover:bg-yellow-600 rounded text-lg cursor-pointer' %>
   <% end %>
-<% end %>
+  <% end %>
+    </div>
+    </div>
+    </div>
+    </div>
+  </div>
+</section>
