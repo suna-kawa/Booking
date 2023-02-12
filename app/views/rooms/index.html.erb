@@ -22,7 +22,7 @@
     <td><%= link_to room.hotel_name, room_path(room), class: 'text-blue-700'  %></td>
     <td><%= room.hotel_introduction %></td>
     <td>￥<%= room.price %>~</td>
-    <td><%= room.updated_at %></td>
+    <td><%= room.updated_at.strftime("%Y/%m/%d") %></td>
   </tr>
   <% end %>
 </tbody>

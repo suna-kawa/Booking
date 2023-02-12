@@ -27,9 +27,9 @@
     <td><%= link_to reservation_room.hotel_name, room_path(reservation_room), class: 'text-blue-700'  %></td>
     <td><%= reservation_room.hotel_introduction %></td>
     <td><p><%= (reservation.check_in - reservation.check_out).to_i.abs * reservation.guest * reservation_room.price %>円</p></td>
-    <td><%= reservation.check_in %></td>
-    <td><%= reservation.check_out %></td>
-    <td><%= reservation.updated_at %></td>
+    <td><%= reservation.check_in.strftime("%Y/%m/%d") %></td>
+    <td><%= reservation.check_out.strftime("%Y/%m/%d") %></td>
+    <td><%= reservation.updated_at.strftime("%Y/%m/%d %H:%M") %></td>
   </tr>
   <% end %>
 <% end %>
