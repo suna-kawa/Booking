@@ -1,15 +1,37 @@
-<div class="2xl">予約内容確認</div>
 <%= form_with model: @reservation, local: true, class: "" do |f| %>
   <%= f.hidden_field :check_in, value: @reservation.check_in %>
   <%= f.hidden_field :check_out, value: @reservation.check_out %>
   <%= f.hidden_field :guest, value: @reservation.guest %>
   <%= f.hidden_field :room_id, value: @reservation.room_id %> 
-<p>チェックイン</p><p><%= @reservation.check_in.strftime("%Y/%m/%d") %></p>
-<p>チェックアウト</p><p><%= @reservation.check_out.strftime("%Y/%m/%d") %></p>
-<p>日数</p><p><%= @reservation.stay_day %>
-<p>人数</p><p><%= @reservation.guest %></p>
-<p>お支払い合計金額</p><p>￥<%= @reservation.total_price %>円</p>
-<p>上記内容で正しければ「確定」ボタンを押して下さい</p>
-  <%= f.submit '予約を確定する' %> 
-  <%= link_to "キャンセル", :back %>
+<dl class="pt-10 m-auto pb-40 max-w-md text-gray-900 divide-y-4 divide-gray-200 dark:text-white dark:divide-gray-700 text-center">
+  <div class="flex flex-col py-3">
+    <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-800 text-left text-xl">予約内容確認</dt>
+  </div>
+  <div class="flex flex-col pb-3">
+    <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">チェックイン</dt>
+    <dd class="text-lg font-semibold  text-gray-800"><%= @reservation.check_in.strftime("%Y/%m/%d") %></dd>
+  </div>
+  <div class="flex flex-col py-3">
+    <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">チェックアウト</dt>
+    <dd class="text-lg font-semibold text-gray-800"><%= @reservation.check_out.strftime("%Y/%m/%d") %></dd>
+  </div>
+  <div class="flex flex-col py-3">
+    <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">宿泊日数</dt>
+    <dd class="text-lg font-semibold text-gray-800"><%= @reservation.guest %>日</dd>
+  </div>
+  <div class="flex flex-col py-3">
+    <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">宿泊人数</dt>
+    <dd class="text-lg font-semibold text-gray-800"><%= @reservation.guest %>人</dd>
+  </div>
+  <div class="flex flex-col py-3">
+    <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-400">お支払い合計金額</dt>
+    <dd class="text-lg font-semibold text-gray-800">￥<%= @reservation.total_price %>円</dd>
+  </div>
+  <div class="actions space-x-4 pt-8">
+  <p class="text-blue-500 pb-2">上記内容で正しければ「確定」ボタンを押して下さい</p>
+  <%= f.submit "予約を確定する", class: "py-2 px-4 bg-blue-500 text-white rounded hover:bg-blue-600 active:bg-blue-700 disabled:opacity-50 cursor-pointer" %>
+  <%= link_to "キャンセル", :back, class: "py-2 px-4 bg-white border border-gray-200 text-gray-600 rounded hover:bg-gray-100 active:bg-gray-200 disabled:opacity-50" %>
+  </div>
+</dl>
 <% end %>
+
