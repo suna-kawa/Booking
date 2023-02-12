@@ -1,28 +1,28 @@
-<div class="text-2xl">登録済みホテル一覧</div>
-
-<table class="table-auto text-center">
-<thead>
+<div class="text-3xl pb-5 font-sans">登録済みホテル一覧</div>
+<div class="relative overflow-x-auto">
+<table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 mb-10">
+<thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
   <tr>
-    <th>ホテル画像</th>
-    <th>ホテル名</th>
-    <th>ホテル紹介</th>
-    <th>料金</th>
-    <th>作成日</th>
+    <th scope="col" class="px-6 py-3">ホテル画像</th>
+    <th scope="col" class="px-6 py-3">ホテル名</th>
+    <th scope="col" class="px-6 py-3">ホテル紹介</th>
+    <th scope="col" class="px-6 py-3">料金</th>
+    <th scope="col" class="px-6 py-3">作成日</th>
   </tr>
 </thead>
 <tbody>
   <% @rooms.each do |room| %>
-  <tr>
+  <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
     <td><% if room.hotel_image? %>
     <%= image_tag room.hotel_image.url, size: '200x200' %>
     <% else %>
     <%= image_tag ("room_default.jpg"), size: '200x200'%>
     <% end %>
     </td>
-    <td><%= link_to room.hotel_name, room_path(room), class: 'text-blue-700'  %></td>
-    <td><%= room.hotel_introduction %></td>
-    <td>￥<%= room.price %>~</td>
-    <td><%= room.updated_at.strftime("%Y/%m/%d") %></td>
+    <td class="px-6 py-4"><%= link_to room.hotel_name, room_path(room), class: 'text-cyan-400'  %></td>
+    <td class="px-6 py-4 text-gray-100"><%= room.hotel_introduction %></td>
+    <td class="px-6 py-4 text-gray-100">￥<%= room.price %>~</td>
+    <td class="px-6 py-4 text-gray-100"><%= room.updated_at.strftime("%Y/%m/%d") %></td>
   </tr>
   <% end %>
 </tbody>

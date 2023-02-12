@@ -23,7 +23,7 @@
     <%= image_tag ("room_default.jpg"), size: '200x200'%>
     <% end %>
     </td>
-    <td class="px-6 py-4"><%= link_to reservation_room.hotel_name, room_path(reservation_room), class: 'text-blue-700'  %></td>
+    <td class="px-6 py-4"><%= link_to reservation_room.hotel_name, room_path(reservation_room), class: 'text-cyan-400'  %></td>
     <td class="px-6 py-4 text-gray-100"><%= reservation_room.hotel_introduction %></td>
     <td class="px-6 py-4 text-gray-100"><p>￥<%= (reservation.check_in - reservation.check_out).to_i.abs * reservation.guest * reservation_room.price %>円</p></td>
     <td class="px-6 py-4 text-gray-100"><%= reservation.check_in.strftime("%Y/%m/%d") %></td>
