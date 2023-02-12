@@ -4,28 +4,27 @@
 <p class="text-center text-gray-800 font-mono text-3xl pb-14">Bookingで<br>快適な旅をしよう</p>
 <div class="flex opacity-80">
 <label for="search-dropdown" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
-<button id="dropdown-button" data-dropdown-toggle="dropdown" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600" type="button">おすすめエリア<svg aria-hidden="true" class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg></button>
+<button id="dropdown-button" data-dropdown-toggle="dropdown" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm mb-5 font-medium text-center text-gray-900 bg-gray-100 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600" type="button">おすすめエリア<svg aria-hidden="true" class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"></svg></button>
 <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
   <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button">
     <li>
-    <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">東京</button>
+    <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" id="tokyo">東京</button>
     </li>
     <li>
-    <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">大阪</button>
+    <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" id="osaka">大阪</button>
     </li>
     <li>
-    <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">京都</button>
+    <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" id="kyoto">京都</button>
     </li>
     <li>
-    <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">札幌</button>
+    <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white" id="sapporo">札幌</button>
     </li>
   </ul>
 </div>
 <div class="relative">
-  <%= f.search_field :address_cont, placeholder: "エリア名を入力", id: "search-dropdown", class: "block p-2.5  z-20 text-sm w-60 text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" %>
+  <%= f.search_field :address_cont, placeholder: "エリア名を入力", id: "search-dropdown", id: "input", class: "block p-2.5  z-20 text-sm w-60 text-gray-900 bg-gray-50 rounded-r-lg border-l-gray-50 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" %>
   <%= f.submit class: "absolute top-0 right-0 p-2.5 text-sm font-medium text-white bg-blue-700 rounded-r-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" %>
-    <svg aria-hidden="true" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
-    <span class="sr-only">Search</span>
+    <span class="sr-only">検索</span>
   </div>
 </div>
 <% end %>
@@ -38,49 +37,67 @@
   <div class="container px-5 py-24 mx-auto">
   <div class="flex flex-wrap w-full mb-20">
   <div class="lg:w-1/2 w-full mb-6 lg:mb-0">
-  <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">Pitchfork Kickstarter Taxidermy</h1>
-  <div class="h-1 w-20 bg-yellow-500 rounded"></div>
+  <h1 class="sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900">おすすめエリア</h1>
+  <div class="h-1 w-21 bg-yellow-500 rounded"></div>
 </div>
-  <p class="lg:w-1/2 w-full leading-relaxed text-gray-500">Whatever cardigan tote bag tumblr hexagon brooklyn asymmetrical gentrify, subway tile poke farm-to-table. Franzen you probably haven't heard of them man bun deep jianbing selfies heirloom prism food truck ugh squid celiac humblebrag.</p>
+  <p class="lg:w-1/2 w-full leading-relaxed text-gray-500"></p>
 </div>
 <div class="flex flex-wrap -m-4">
   <div class="xl:w-1/4 md:w-1/2 p-4">
+  <%= link_to("http://localhost:3000/rooms/hotellist?q%5Baddress_cont%5D=%E6%9D%B1%E4%BA%AC&commit=Search", data: {"turbolinks" => false}) do  %>
   <div class="bg-gray-100 p-6 rounded-lg">
-  <%= link_to '東京', "http://localhost:3000/rooms/hotellist?q%5Baddress_cont%5D=%E6%9D%B1%E4%BA%AC&commit=Search", data: {"turbolinks" => false} %>
-    <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/720x400" alt="content">
-    <h3 class="tracking-widest text-yellow-500 text-xs font-medium title-font">SUBTITLE</h3>
-    <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Chichen Itza</h2>
-    <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
+    <%= image_tag 'tokyo.jpg', class: "h-40 rounded w-full object-cover object-center mb-6" %>
+    <h3 class="tracking-widest text-yellow-500 text-xs font-medium title-font"></h3>
+    <h2 class="text-lg text-gray-900 font-medium title-font mb-4 font-serif">東京</h2>
+    <p class="leading-relaxed text-base font-serif">東京タワーやスカイツリーなどが有名な日本の大都市東京です</p>
   </div>
 </div>
+<% end %>
 <div class="xl:w-1/4 md:w-1/2 p-4">
+  <%= link_to("http://localhost:3000/rooms/hotellist?q%5Baddress_cont%5D=%E5%A4%A7%E9%98%AA&commit=Search", data: {"turbolinks" => false}) do %>
   <div class="bg-gray-100 p-6 rounded-lg">
-  <%= link_to '大阪', "http://localhost:3000/rooms/hotellist?q%5Baddress_cont%5D=%E5%A4%A7%E9%98%AA&commit=Search", data: {"turbolinks" => false} %>
-    <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/721x401" alt="content">
-    <h3 class="tracking-widest text-yellow-500 text-xs font-medium title-font">SUBTITLE</h3>
-    <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Colosseum Roma</h2>
-    <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
+    <%= image_tag 'osaka.jpg', class: "h-40 rounded w-full object-cover object-center mb-6" %>
+    <h3 class="tracking-widest text-yellow-500 text-xs font-medium title-font"></h3>
+    <h2 class="text-lg text-gray-900 font-medium title-font mb-4 font-serif">大阪</h2>
+    <p class="leading-relaxed text-base font-serif">派手な看板が並ぶ道頓堀など観光名所盛りだくさんです</p>
   </div>
 </div>
+<% end %>
 <div class="xl:w-1/4 md:w-1/2 p-4">
+  <%= link_to("http://localhost:3000/rooms/hotellist?q%5Baddress_cont%5D=%E4%BA%AC%E9%83%BD&commit=Search", data: {"turbolinks" => false}) do %>
   <div class="bg-gray-100 p-6 rounded-lg">
-  <%= link_to '京都', "http://localhost:3000/rooms/hotellist?q%5Baddress_cont%5D=%E4%BA%AC%E9%83%BD&commit=Search", data: {"turbolinks" => false} %>
-    <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/722x402" alt="content">
-    <h3 class="tracking-widest text-yellow-500 text-xs font-medium title-font">SUBTITLE</h3>
-    <h2 class="text-lg text-gray-900 font-medium title-font mb-4">Great Pyramid of Giza</h2>
-    <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
+    <%= image_tag 'kyoto.jpg', class: "h-40 rounded w-full object-cover object-center mb-6" %>
+    <h3 class="tracking-widest text-yellow-500 text-xs font-medium title-font"></h3>
+    <h2 class="text-lg text-gray-900 font-medium title-font mb-4 font-serif">京都</h2>
+    <p class="leading-relaxed text-base font-serif">伝統的な雰囲気を持つ風景が味わえるのが京都の魅力です</p>
   </div>
 </div>
+<% end %>
 <div class="xl:w-1/4 md:w-1/2 p-4">
+  <%= link_to("http://localhost:3000/rooms/hotellist?q%5Baddress_cont%5D=%E6%9C%AD%E5%B9%8C&commit=Search", data: {"turbolinks" => false}) do %>
   <div class="bg-gray-100 p-6 rounded-lg">
-   <%= link_to '札幌', "http://localhost:3000/rooms/hotellist?q%5Baddress_cont%5D=%E6%9C%AD%E5%B9%8C&commit=Search", data: {"turbolinks" => false} %>
-    <img class="h-40 rounded w-full object-cover object-center mb-6" src="https://dummyimage.com/723x403" alt="content">
-    <h3 class="tracking-widest text-yellow-500 text-xs font-medium title-font">SUBTITLE</h3>
-    <h2 class="text-lg text-gray-900 font-medium title-font mb-4">San Francisco</h2>
-    <p class="leading-relaxed text-base">Fingerstache flexitarian street art 8-bit waistcoat. Distillery hexagon disrupt edison bulbche.</p>
+    <%= image_tag 'sapporo.jpg', class: "h-40 rounded w-full object-cover object-center mb-6" %>
+    <h3 class="tracking-widest text-yellow-500 text-xs font-medium title-font"></h3>
+    <h2 class="text-lg text-gray-900 font-medium title-font mb-4 font-serif">札幌</h2>
+    <p class="leading-relaxed text-base font-serif">札幌時計台などが有名な冬に行きたい観光スポットです</p>
   </div>
   </div>
+  <% end %>
   </div>
 </div>
 </section>
 </div>
+<script>
+  document.getElementById("tokyo").onclick = function() {
+    document.getElementById("input").value = "東京";
+  };
+  document.getElementById("osaka").onclick = function() {
+    document.getElementById("input").value = "大阪";
+  };
+  document.getElementById("kyoto").onclick = function() {
+    document.getElementById("input").value = "京都";
+  };
+  document.getElementById("sapporo").onclick = function() {
+    document.getElementById("input").value = "札幌";
+  };
+</script>
