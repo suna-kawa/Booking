@@ -1,0 +1,15 @@
+<div class="2xl">予約内容確認</div>
+<%= form_with model: @reservation, local: true, class: "" do |f| %>
+  <%= f.hidden_field :check_in, value: @reservation.check_in %>
+  <%= f.hidden_field :check_out, value: @reservation.check_out %>
+  <%= f.hidden_field :guest, value: @reservation.guest %>
+  <%= f.hidden_field :room_id, value: @reservation.room_id %> 
+<p>チェックイン</p><p><%= @reservation.check_in %></p>
+<p>チェックアウト</p><p><%= @reservation.check_out %></p>
+<p>日数</p><p><%= @reservation.stay_day %>
+<p>人数</p><p><%= @reservation.guest %></p>
+<p>お支払い合計金額</p><p>￥<%= @reservation.total_price %></p>
+<p>上記内容で正しければ「確定」ボタンを押して下さい</p>
+  <%= f.submit '予約を確定する' %> 
+  <%= link_to "キャンセル", :back %>
+<% end %>

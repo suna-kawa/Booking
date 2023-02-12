@@ -13,3 +13,34 @@
   </p>
   <p><%= @room.price %></p>
 </div>
+
+<% if user_signed_in? %>
+<%= form_with model: Reservation.new, local: true, url: confirm_reservation_path do |f| %>
+  <%= f.label :check_in, 'チェックイン' %>
+  <%= f.date_field :check_in %>
+
+  <%= f.label :check_out, 'チェックアウト' %>
+  <%= f.date_field :check_out %>
+
+
+  <%= f.label :guest, '宿泊人数' %>
+  <%= f.number_field :guest %>
+
+  <%= f.hidden_field :room_id, :value => @room.id %>
+
+  <%= f.submit '予約する' %>
+<% end %>
+<% else %>
+<%= form_with local: true, class: "" do |f| %>
+  <%= f.label :check_in, 'チェックイン' %>
+  <%= f.date_field :check_in %>
+
+  <%= f.label :check_out, 'チェックアウト' %>
+  <%= f.date_field :check_out %>
+
+  <%= f.label :guest, '宿泊人数' %>
+  <%_= f.number_field :guest %>
+
+  <%= link_to "ログインする", new_user_session_path, class: "mr-5 hover:text-gray-400" %>
+  <% end %>
+<% end %>

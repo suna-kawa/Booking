@@ -13,5 +13,10 @@ Rails.application.routes.draw do
     end
   end
   resources :rooms
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'reservations/index'
+  resources :reservations do
+    member do
+    post 'confirm', as: 'confirm'
+    end
+  end
 end

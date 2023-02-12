@@ -1,5 +1,5 @@
 class RoomsController < ApplicationController
-  before_action :authenticate_user!, except: [:home, :hotellist]
+  before_action :authenticate_user!, except: [:home, :hotellist, :show]
   def index
     @rooms = Room.all
   end
@@ -21,6 +21,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
+    @reservation = Reservation.new
   end
 
   def edit
