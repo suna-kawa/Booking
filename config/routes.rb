@@ -15,7 +15,7 @@ Rails.application.routes.draw do
   resources :rooms
   get 'reservations/index'
   resources :reservations do
-    member do
+    collection do
     post 'confirm', as: 'confirm'
     end
   end

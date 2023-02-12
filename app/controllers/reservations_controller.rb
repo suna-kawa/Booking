@@ -13,6 +13,9 @@ class ReservationsController < ApplicationController
     @room = Room.find(params[:reservation][:room_id])
     @reservation.room_id = @room.id
     @reservation.user_id = current_user.id
+    if @reservation.check_in_out_check || @reservation.new_nil_check
+      render 'rooms/show'
+    end
   end
 
   def create

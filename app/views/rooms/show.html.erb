@@ -15,7 +15,7 @@
 </div>
 
 <% if user_signed_in? %>
-<%= form_with model: Reservation.new, local: true, url: confirm_reservation_path do |f| %>
+<%= form_with model: Reservation.new, local: true, url: confirm_reservations_path do |f| %>
   <%= f.label :check_in, 'チェックイン' %>
   <%= f.date_field :check_in %>
 
