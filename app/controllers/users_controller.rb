@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  # アクション実行前にログインされてるかどうか確認
   before_action :authenticate_user!
 
   def account

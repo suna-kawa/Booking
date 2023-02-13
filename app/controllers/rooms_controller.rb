@@ -35,7 +35,6 @@ class RoomsController < ApplicationController
   end
 
   def home
-    #params[:q]には検索フォームに入力した値が入る
     @q = Room.ransack(params[:q])
   end
 

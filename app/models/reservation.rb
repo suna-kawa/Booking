@@ -18,9 +18,7 @@ class Reservation < ApplicationRecord
   end
 
   def stay_day
-    # チェックインとチェックアウトの差分をstay_dayへ代入
     stay_day = check_in - check_out
-    # 有理数を整数にして、-を取るために絶対値を求める
     stay_day.to_i.abs
   end
 

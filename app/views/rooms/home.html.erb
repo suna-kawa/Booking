@@ -1,4 +1,3 @@
-<%# 検索フォーム %>
 <div class="main">
 <%= search_form_for @q, url: hotellist_rooms_path(@q) do |f| %>
 <p class="text-center text-gray-800 font-mono text-3xl pb-14">Bookingで<br>快適な旅をしよう</p>
@@ -28,10 +27,9 @@
   </div>
 </div>
 <% end %>
-<%# 背景画像 %>
 <%= image_tag 'tabi-image.jpg', class: 'bg-cover' %>
 </div>
-<%# おすすめエリア %>
+
 <div class="article">
   <section class="text-gray-600 body-font">
   <div class="container px-5 py-24 mx-auto">
