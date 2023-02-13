@@ -26,7 +26,7 @@
   <button id="dropdownAvatarNameButton" data-dropdown-toggle="dropdownAvatarName" class="flex items-center text-sm font-medium text-gray-50 rounded-full hover:text-blue-500 dark:hover:text-blue-500 md:mr-0 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white" type="button">
     <span class="sr-only">Open user menu</span>
     <% if current_user.image? %>
-    <%= image_tag current_user.image.url, class: "w-8 h-8 mr-2 rounded-full", alt: 'user photo' %>
+    <%= image_tag current_user.image.thumb.url, class: "w-8 h-8 mr-2 rounded-full", alt: 'user photo' %>
     <% else %>
     <%= image_tag ("noimage.png"), class: "w-8 h-8 mr-2 rounded-full" %>
     <% end %>
