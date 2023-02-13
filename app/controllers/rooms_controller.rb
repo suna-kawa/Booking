@@ -1,7 +1,8 @@
 class RoomsController < ApplicationController
   before_action :authenticate_user!, except: [:home, :hotellist, :show]
   def index
-    @rooms = Room.all
+    @user = current_user
+    @rooms = @user.rooms.all
   end
 
   def new
