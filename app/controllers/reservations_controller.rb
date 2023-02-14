@@ -12,6 +12,7 @@ class ReservationsController < ApplicationController
     @room = Room.find(params[:reservation][:room_id])
     @reservation.room_id = @room.id
     @reservation.user_id = current_user.id
+    @q = Room.ransack(params[:q])
     if @reservation.check_in_out_check || @reservation.new_nil_check
       render 'rooms/show'
     end
@@ -19,13 +20,12 @@ class ReservationsController < ApplicationController
 
   def create
     @reservation = current_user.reservations.build(reservation_params)
-    session[:reservation] = @reservation
     @room = Room.find(params[:reservation][:room_id])
     @reservation.room_id = @room.id
     if @reservation.save!
-    redirect_to reservations_index_path
-    else
-    render 'rooms/show'
+      redirect_to reservations_index_path
+    elsif params[:back] 
+      render 'rooms/show' and return
     end
   end
 

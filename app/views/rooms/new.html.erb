@@ -1,6 +1,7 @@
 <div class="pt-10 pb-40 text-center p-8 rounded border border-gray-200">
 <h1 class="font-medium text-3xl">新規登録</h1>
 <%= form_with model: @room, local: true, class: "mt-8" do |f| %>
+  <%= render 'shared/error_messages' %>
   <%= f.label :hotel_name, "ホテル名", class: "text-sm text-gray-700 block mb-1 font-medium" %>
   <%= f.text_field :hotel_name, class: "bg-gray-100 border border-gray-200 rounded py-1 px-3 block focus:ring-blue-500 focus:border-blue-500 text-gray-700 w-96 m-auto", placeholder: "ホテル名を入力" %>
 

@@ -1,0 +1,10 @@
+<% if @room.errors.any? %>
+<div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded" role="alert">
+    <strong class="font-bold"><%= pluralize(@room.errors.count, "error") %>が原因で保存出来ませんでした</strong>
+    <ul>
+    <% @room.errors.full_messages.each do |msg| %>
+      <li class="block sm:inline"><%= msg %></li>
+    <% end %>
+    </ul>
+</div>
+<% end %>
