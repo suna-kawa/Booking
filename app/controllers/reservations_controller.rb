@@ -3,9 +3,10 @@ class ReservationsController < ApplicationController
 
   def index
     # ユーザーの予約情報を取得かつ重複除去
-    @reservations = current_user.reservations.distinct
+    @reservations = current_user.reservations
     # ユーザが予約したホテル情報を取得かつ重複除去
-    @reservation_rooms = current_user.reservation_rooms.all.distinct
+    @reservation_rooms = current_user.reservation_rooms
+    
   end
 
   def confirm
